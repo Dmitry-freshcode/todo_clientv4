@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LoginAddUser from '../components/login/LoginAddUser'
+//import LoginAddUser from '../components/login/LoginAddUser'
 import styles from './login.module.css'
 
 class AddUser extends Component {

@@ -1,22 +1,40 @@
 import React, { Component } from 'react'
 import styles from './Login.module.css'
 
-
 export default class LoginForm extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      username:'',
+      password:'',
+    };
+  }
+
+  changeName = (event) => { 
+    this.setState({
+       username: event.target.value,      
+      });   
+  };
+
+  changePassword = (event) => {    
+    this.setState({
+      password: event.target.value,      
+    });    
+  };
+
   render() {
-    return (
-      <> 
-        <div className={styles.header}>
-            <p className={styles.sign}>Sign in</p>
-            <span></span>
-            <p className={styles.sign}>Sign up</p>
-        </div>
+    const {username,password} = this.state;    
+    return (          
+      <>        
         <div className={styles.loginBody}>
-            <input type="text" placeholder="login" />
-            <input type="password" placeholder="password"/>
-            <button className={styles.loginButton}>sign in</button>
-            <p className={styles.add}>or add new user</p>
+            <input type="text" value={this.state.username} placeholder="login" onChange={this.changeName}/>
+            <input type="password" value={password} placeholder="password" onChange={this.changePassword}/>
+            <button 
+            className={styles.loginButton} 
+            onClick={()=>{this.props.callBack(username,password);this.setState({username:'',password:''})}}>{this.props.name}</button>   
+            <span></span>         
         </div>
       </>
-    )}
+    )
+  }
 }

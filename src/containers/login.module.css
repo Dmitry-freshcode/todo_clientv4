@@ -14,3 +14,43 @@
     -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
 }
+.header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: white;
+    
+}
+.header span{
+    margin: 0 10px;
+    border-left: 2px solid white;
+    height: 20px;
+}
+.header p{
+    cursor: pointer;
+}
+.header .active{
+    font-weight: bold;
+}
+
+.loginError, .addError,.addSuccess{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    position: fixed;
+    top:0;
+    height: 30px;
+    margin-top: -30px;
+    background-color: red;
+    width: 350px;
+    transition: 0.5s;
+    border-radius:  0 0 10px 10px;
+}
+.addSuccess{
+    background-color: green;
+}
+.active{
+    margin-top: 0; 
+}
