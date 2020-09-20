@@ -7,7 +7,7 @@ import {
     USER_AUTOLOGIN,
 } from '../constants/user';
 
-const initialState = null;
+const initialState = {isLogin:false};
 
 const userReducer = (state = initialState, action) => {    
     switch (action.type) {  
@@ -20,11 +20,12 @@ const userReducer = (state = initialState, action) => {
         case SAVE_LOCAL_USER:            
             return state; 
         case LOGOUT_USER:
-            return {}       
-        case SET_USER_DATA:
+            return {isLogin:false}       
+        case SET_USER_DATA:            
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isLogin:true,
             };
         default:
             return state;

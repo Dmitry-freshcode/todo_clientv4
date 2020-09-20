@@ -1,0 +1,41 @@
+.header{
+    padding: 20px 0;
+    color:white;
+    background-color: rgb(28, 123, 247);
+   
+    width: 100vw;
+    display: flex;  
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center; 
+}
+
+.statusContainer{
+    margin-top: 10px;
+    width: calc(100vw/2);
+    display: flex;      
+    justify-content: space-around;
+    align-items: center; 
+}
+.userContainer{
+    position: absolute;
+    height: 60px;
+    display: flex;   
+    flex-direction: column;  
+    justify-content: space-around;
+    align-items: center;
+    top:20px;
+    left:20px;
+}
+.textInput{
+    width: 350px;
+}
+.date{
+    width: 150px;
+}
+.add{
+    padding: 0 20px;
+}
+input{
+    margin-right: 10px;
+}

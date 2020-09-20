@@ -1,0 +1,31 @@
+.taskList{   
+    width: 80vw;    
+    margin-top: 20px;
+    margin-bottom: auto;
+    
+}
+.taskList ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+} 
+
+.listItem{   
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+.task{
+    flex-basis:70%;
+    cursor: pointer;
+}
+.listItem:last-child{
+    border-bottom: none;
+}
+.through{
+    text-decoration: line-through;
+    color:green;
+}

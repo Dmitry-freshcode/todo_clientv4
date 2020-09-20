@@ -47,7 +47,7 @@ class Login extends Component {
   render() {
     let isAddError = false,
         isLoginError= false,
-        isAddSuccess = false;
+        isAddSuccess = false;    
 
     if(this.props.error.isError){
       switch (this.props.error.errorData.message){

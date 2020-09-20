@@ -31,5 +31,6 @@ export const addUser = data => ({
 })
 
 export const autologinUser = () => ({
-    type: USER_AUTOLOGIN,       
+    type: USER_AUTOLOGIN,
+         
 })

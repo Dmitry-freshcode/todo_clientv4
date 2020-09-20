@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 //import AddUser from '../containers/addUser';
 import Tasks from '../containers/tasks';
 import {autologinUser} from '../actions/user'
+import Home from '../containers/home'
 
 class MainRouter extends Component {
 
@@ -16,14 +17,15 @@ class MainRouter extends Component {
     }
    
     
-    render() {  
-              
-        const isLogin = this.props.user?true:false;    
+    render() {               
+        //const isLogin = this.props.user?true:false;   
         return (            
             <Router history={history}>    
                 <Switch>   
-                    <PrivatRoute auth={isLogin} path="/task" component={Tasks}/>
-                    <Route path="/" component={Login}/> 
+                    <Route path="/login" component={Login}/> 
+                    <Route path="/test" component={Home}/> 
+                    <PrivatRoute auth={this.props.user.isLogin} path="/" component={Tasks}/>                                        
+                    <Route path="*" component={Login}/>
                 </Switch>
             </Router>
         );
@@ -32,7 +34,7 @@ class MainRouter extends Component {
 
 
 Login.defaultProps = {
-    user: {},
+    user: {isLogin:false},
  }
  
  Login.propTypes = {

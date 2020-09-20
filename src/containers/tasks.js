@@ -2,13 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {logoutUser} from '../actions/user';
+import styles from './tasks.module.css'
+import Header from '../components/Tasks/Header'
+import {getTasks} from '../actions/tasks'
+import  TaskList  from '../components/Tasks/TaskList'
+import Footer from '../components/Tasks/Footer'
+
 
 class Tasks extends Component {
+
+  componentDidMount(){
+    this.props.getTasks();
+  }
   render() {
     return (
-      <div>
-        <h1>TASKS</h1>
-        <button onClick={this.props.logoutUser}>LOGOUT</button>
+      <div  className={styles.wrapper}>
+        <Header />
+        <TaskList />
+        {<Footer /> }    
       </div>
     )
   }
@@ -29,6 +40,7 @@ Tasks.defaultProps = {
  
  const mapDispatchToProps = dispatch => ({
     logoutUser: data => dispatch(logoutUser()),
+    getTasks: () => dispatch(getTasks()),
  })
  
  export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

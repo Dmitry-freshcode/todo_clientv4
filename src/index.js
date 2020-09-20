@@ -9,7 +9,7 @@ import './reset.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const store = initStore();
+export const store = initStore();
 
 sagaMiddleware.run(rootSaga);
 

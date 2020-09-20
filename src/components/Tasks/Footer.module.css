@@ -1,0 +1,20 @@
+.pagination{  
+    user-select: none;   
+    width: 200px; 
+    margin-bottom: 10px;
+    display: flex;      
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.pagination .active{    
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.pagination p:hover{
+    color: blue;
+    cursor: pointer;
+    font-weight: bolder;
+}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import {store} from '../index';
+import {store} from '../index';
 
 const API = axios.create({
   baseURL: 'http://localhost:3000',
@@ -31,37 +31,88 @@ export const addUser = async (data) =>{
   }          
 }
 
-// export const getProfile = async (data) =>{ 
-//   try{    
-//     const response = await API.get('/users/profile',{headers:{
-//       Authorization: `Bearer ${data}`
-//     }
-//   });    
-//     return response; 
-//   }catch(e){       
-//     return e;
-//   }          
-// }
+export const getProfile = async (data) =>{ 
+  try{    
+    const response = await API.get('/users/profile',{headers:{
+      Authorization: `Bearer ${data}`
+    }
+  });    
+    return response; 
+  }catch(e){       
+    return e;
+  }          
+}
+export const getTasks = async () =>{   
+  try{  
+    const _id = store.getState().user._id;
+    const token = store.getState().user.access_token;      
+    let currentPage = localStorage.getItem('currentPage');
+    const filter = store.getState().tasks.filter;
+    if (!currentPage){
+      currentPage =  store.getState().tasks.currentPage;
+    }
+    if(_id && token && currentPage){
+      const response = await API.get('/todo/find/all',
+      {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        } ,
+         params:{ 
+          username : _id,
+          page: currentPage,
+          filter:filter,
+        }        
+      })    
+      return response;
+    }
 
-// export const addTodo = async (todo) =>{    
-//   try{
-//     const username = store.getState().user.username;
-//     const token = store.getState().token.access_token;    
-//     const response = await API.post('/todo/add',{
-//            name: todo.name,
-//            username: username,           
-//            state: false,
-//            dueDate: todo.dueDate,
-//          },{headers:{
-//       Authorization: `Bearer ${token}`
-//   }
-//   }); 
+  
+  }catch(e){  
+    console.log(e);     
+    return e;
+  }          
+}
 
-//     return response; 
-//   }catch(e){       
-//     return e;
-//   }          
-// }
+export const addTodo = async (todo) =>{    
+  try{    
+    const username = store.getState().user._id;
+    const token = store.getState().user.access_token;    
+    const response = await API.post('/todo/add',{
+           name: todo.name,
+           userId: username,           
+           state: false,
+           dueDate: todo.dueDate,
+         },{headers:{
+      Authorization: `Bearer ${token}`
+  }
+  }); 
+
+    return response; 
+  }catch(e){       
+    return e;
+  }          
+}
+
+export const updateTask = (query)  =>{
+  const token = store.getState().user.access_token;
+  //console.log(query)
+    API.patch('/todo/state/update',{
+      query
+    },
+    {
+      headers: {'Authorization': `Bearer ${token}`}      
+    });
+}
+
+
+export const deleteTask = async(id) =>{ 
+  const token = store.getState().user.access_token;         
+    API.post('/todo/delete',{ _id:id},{      
+        headers: {'Authorization': `Bearer ${token}`}
+    });
+}
+
+
 // export const getTodo = async () =>{   
 //   try{  
 //     const username = store.getState().user.username;
@@ -89,23 +140,6 @@ export const addUser = async (data) =>{
 //   }          
 // }
 
-// export const setStateTodo = (id)  =>{
-//   const token = store.getState().token.access_token;
-//     API.patch('/todo/state/update',{
-//       _id:id
-//     },
-//     {
-//       headers: {'Authorization': `Bearer ${token}`}      
-//     });
-// }
-
-
-// export const deleteTodo = async(id) =>{ 
-//   const token = store.getState().token.access_token;         
-//     API.post('/todo/delete',{ _id:id},{      
-//         headers: {'Authorization': `Bearer ${token}`}
-//     });
-// }
 
 
 

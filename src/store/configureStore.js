@@ -14,9 +14,11 @@ import history from '../utils/history';
 
 import userReducer from '../reducers/user';
 import errorReducer from '../reducers/error';
+import tasksReducer from '../reducers/tasks'
 
 const rootReducer = combineReducers({
     form,
+    tasks: tasksReducer,
     router: routerReducer,
     user: userReducer,
     error:errorReducer,
