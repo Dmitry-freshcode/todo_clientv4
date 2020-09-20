@@ -3,6 +3,7 @@ import {
     TASK_CREATE,    
     TASK_SAVE_STATE,
    
+    FILTER_TASKS,
     TASKS_SET_CURRENT,
     TASK_DELETE,
     TASK_UPDATE,
@@ -10,7 +11,8 @@ import {
     TASKS_SET, 
     TASKS_GET,
 } from '../constants/tasks'
-import {     
+import {   
+    filterTasks,  
     getTasks,
     addTodo,
     updateTask,
@@ -42,7 +44,10 @@ export function* workerSetCurrent(index){
     yield put( {type: TASKS_GET});
 
 }
-
+export function* workerFilterTasks(data){    
+    yield localStorage.setItem('filter',data.payload);
+    yield put( {type: TASKS_GET,data:data.payload});
+}
 
 
 export function* watchActionTasks() {    
@@ -51,7 +56,7 @@ export function* watchActionTasks() {
     yield takeEvery(TASK_UPDATE ,workerUpdateTask);
     yield takeEvery(TASK_DELETE ,workerDeleteTask);    
     yield takeEvery(TASKS_SET_CURRENT,workerSetCurrent);  
-   // yield takeEvery(TODO_DELETE, workerDeleteTodo);
+    yield takeEvery(FILTER_TASKS, workerFilterTasks);
     //yield takeEvery(TODO_EDIT_CURRENT, workerEditCurrent);
     //yield takeEvery(TODO_FIND, FindTodo); 
 }

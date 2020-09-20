@@ -39,3 +39,9 @@
 input{
     margin-right: 10px;
 }
+.header{
+    user-select: none;
+}
+.active{
+    font-weight: bold;
+}

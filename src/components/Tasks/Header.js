@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {logoutUser} from '../../actions/user';
-import {addTask} from '../../actions/tasks'
+import {addTask,filterTasks} from '../../actions/tasks'
 
 
 class Header extends Component {
@@ -41,6 +41,11 @@ class Header extends Component {
         })
       }
 
+      onFilter = (event)=>{        
+        this.props.filterTasks(event.target.id);
+
+      }
+
 
   render() {
       const {username} = this.props.user;
@@ -50,7 +55,7 @@ class Header extends Component {
             <div className={styles.userContainer}>
                     <p>Hi, {username}</p>
                     <Icon path={mdiLogoutVariant}
-                        title="User Profile"
+                        title="LogOut User"
                         size={1}                                              
                         color="white"
                         onClick={this.logout}
@@ -63,9 +68,9 @@ class Header extends Component {
             </div>
                 
             <div className={styles.statusContainer}>
-                <p>all tasks: {tasksAll}</p>
-                <p>completed: {tasksComplete}</p>
-                <p>not completed: {tasksNoCompleted}</p>
+                <p className={classNames({[styles.active]:this.props.tasks.filter==="all"})} id="all" onClick={this.onFilter}>all tasks: {tasksAll}</p>
+                <p className={classNames({[styles.active]:this.props.tasks.filter==="completed"})} id="completed" onClick={this.onFilter}>completed: {tasksComplete}</p>
+                <p className={classNames({[styles.active]:this.props.tasks.filter==="notCompleted"})} id="notCompleted" onClick={this.onFilter}>not completed: {tasksNoCompleted}</p>
             </div>  
 
          
@@ -104,6 +109,7 @@ Header.defaultProps = {
  const mapDispatchToProps = dispatch => ({    
     logoutUser: data => dispatch(logoutUser()),
     addTask: data => dispatch(addTask(data)),
+    filterTasks: data=>dispatch(filterTasks(data)),
  })
  
  export default connect(mapStateToProps, mapDispatchToProps)(Header);

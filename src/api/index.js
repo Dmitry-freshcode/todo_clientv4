@@ -43,7 +43,7 @@ export const getProfile = async (data) =>{
   }          
 }
 export const getTasks = async () =>{   
-  try{  
+  try{      
     const _id = store.getState().user._id;
     const token = store.getState().user.access_token;      
     let currentPage = localStorage.getItem('currentPage');

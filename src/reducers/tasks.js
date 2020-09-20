@@ -4,6 +4,7 @@ import {
     TASK_UPDATE_STATE,
 	TASK_SAVE_STATE,
 
+	FILTER_TASKS,
 	TASKS_SET_CURRENT,
 	TASK_DELETE,
 	TASK_UPDATE,
@@ -59,6 +60,11 @@ const tasksReducer = (state = initialState, action) => {
 				...state,
 				currentPage:action.payload
 			}
+		case FILTER_TASKS:
+			return {
+				...state,
+				filter:action.payload,
+			};	
 		// case TODO_DELETE_CURRENT:			
 		// 	return {
 		// 		...state,

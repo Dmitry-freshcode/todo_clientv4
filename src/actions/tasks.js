@@ -2,6 +2,7 @@ import {
     TASK_CREATE,    
     TASK_UPDATE_STATE,
 
+    FILTER_TASKS,
     TASKS_SET_CURRENT,
     TASK_DELETE,
     TASK_UPDATE,
@@ -48,17 +49,18 @@ const deleteTask = (data) =>{
         payload: data                     
     }
 }
-const setCurrentPage = (id) =>{
+const setCurrentPage = (data) =>{
     return{
         type: TASKS_SET_CURRENT,
-        payload:id,              
+        payload:data,              
     }
 }
-// const deleteCurrentTodo = (id) =>{
-//     return{
-//         type: TODO_DELETE_CURRENT,                    
-//     }
-// }
+const filterTasks = (data) =>{
+    return{
+        type: FILTER_TASKS,
+        payload: data                      
+    }
+}
 // const findTodos =() =>{    
 //     return {
 //         type: TODO_FIND,
@@ -68,6 +70,7 @@ const setCurrentPage = (id) =>{
 export {
     // addTodo,    
     // deleteTodo,
+    filterTasks,
     setCurrentPage,
     deleteTask,
     updateTasks,
