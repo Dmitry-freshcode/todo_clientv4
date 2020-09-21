@@ -8,8 +8,7 @@ import PropTypes from 'prop-types';
 import {logoutUser} from '../../actions/user';
 import {addTask,filterTasks} from '../../actions/tasks'
 import { format} from 'date-fns';
-import {subscribeToLogin,subscribeTotest} from '../../api/socket'
-
+import {subscribeToReload} from '../../api/socket'
 
 class Header extends Component {
     constructor(){
@@ -17,13 +16,11 @@ class Header extends Component {
         this.state={
             newDate:format(new Date(),'yyyy-MM-dd'),
             newTask:'',
-
         }
     }
     componentDidMount(){        
-        subscribeToLogin();
+        subscribeToReload();
     }
-
 
     logout =()=>{
         this.props.logoutUser();
@@ -48,7 +45,6 @@ class Header extends Component {
 
       onFilter = (event)=>{        
         this.props.filterTasks(event.target.id);
-
       }
 
 
@@ -100,8 +96,7 @@ Header.defaultProps = {
         filter:"all",
     }
     }
- Header.propTypes = {
-  //error: PropTypes.object.isRequired,
+ Header.propTypes = {  
   user:PropTypes.object.isRequired,
   tasks:PropTypes.object.isRequired,
  }
@@ -112,7 +107,7 @@ Header.defaultProps = {
  });
  
  const mapDispatchToProps = dispatch => ({    
-    logoutUser: data => dispatch(logoutUser()),
+    logoutUser: () => dispatch(logoutUser()),
     addTask: data => dispatch(addTask(data)),
     filterTasks: data=>dispatch(filterTasks(data)),
  })

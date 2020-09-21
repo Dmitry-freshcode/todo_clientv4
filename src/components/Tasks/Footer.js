@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import {setCurrentPage} from '../../actions/tasks';
 
 class Footer extends Component {
-
     setCurrentPage = (index) =>{    
       this.props.setCurrentPage(index);
     }

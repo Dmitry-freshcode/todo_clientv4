@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './login.module.css'
 import LoginForm from '../components/login/LoginForm'
-//import LoginAddUser from '../components/login/LoginAddUser'
 import {loginUser,addUser} from '../actions/user'
 import classNames from 'classnames';
 
@@ -27,9 +26,7 @@ class Login extends Component {
       password,
     }   
     this.props.loginUser(data);
-  }
-
-  
+  }  
 
   addUser =(username,password)=>{
     console.log(username,password)

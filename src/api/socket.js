@@ -4,7 +4,7 @@ import { getTasks } from '../actions/tasks';
 
 const socket = openSocket('http://localhost:3000');
 
-export const subscribeToLogin = () => { 
+export const subscribeToReload = () => { 
   socket.on('refresh',()=>{     
     store.dispatch(getTasks())
   });

@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { 
     Router,
     Route,
-    Switch,
-    //Redirect
+    Switch,  
  } from 'react-router-dom';
 import history from '../utils/history';
 import PrivatRoute from './privateRouter';
 import Login from '../containers/login';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-//import AddUser from '../containers/addUser';
 import Tasks from '../containers/tasks';
 import {autologinUser} from '../actions/user'
-import Home from '../containers/home'
+
 
 class MainRouter extends Component {
 
@@ -22,13 +20,11 @@ class MainRouter extends Component {
     }
    
     
-    render() {               
-        //const isLogin = this.props.user?true:false;   
+    render() {        
         return (            
             <Router history={history}>    
                 <Switch>   
-                    <Route path="/login" component={Login}/> 
-                    <Route path="/test" component={Home}/> 
+                    <Route path="/login" component={Login}/>                     
                     <PrivatRoute auth={this.props.user.isLogin} path="/" component={Tasks}/>                                        
                     <Route path="*" component={Login}/>
                 </Switch>

@@ -92,8 +92,7 @@ export const addTodo = async (todo) =>{
 }
 
 export const updateTask = (query)  =>{
-  const token = store.getState().user.access_token;
-  //console.log(query)
+  const token = store.getState().user.access_token;  
     const response = API.patch('/todo/state/update',{
       query
     },

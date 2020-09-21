@@ -49,19 +49,15 @@ TaskList.defaultProps = {
         filter:"all",
     }
     }
-    TaskList.propTypes = {
-  //error: PropTypes.object.isRequired,
-  //user:PropTypes.object.isRequired,
+    TaskList.propTypes = {  
   tasks:PropTypes.object.isRequired,
  }
  
- const mapStateToProps = store => ({
-     //user: store.user,
+ const mapStateToProps = store => ({     
      tasks:store.tasks,
  });
  
- const mapDispatchToProps = dispatch => ({    
-    //logoutUser: data => dispatch(logoutUser()),
+ const mapDispatchToProps = dispatch => ({     
     updateTasks: (data) => dispatch(updateTasks(data)),
     deleteTask: (data) => dispatch(deleteTask(data)),
  })

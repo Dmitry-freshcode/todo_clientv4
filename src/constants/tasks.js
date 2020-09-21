@@ -1,5 +1,3 @@
-export const TASK_CREATE = 'TODO_CREATE';
-
 export const TASK_DELETE = 'TASK_DELETE';
 export const FILTER_TASKS = 'FILTER_TASKS';
 export const TASKS_SET_CURRENT = 'TASKS_SET_CURRENT';
