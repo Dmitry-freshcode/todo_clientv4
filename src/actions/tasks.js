@@ -1,7 +1,4 @@
-import { 
-    TASK_CREATE,    
-    TASK_UPDATE_STATE,
-
+import {
     FILTER_TASKS,
     TASKS_SET_CURRENT,
     TASK_DELETE,
@@ -61,15 +58,8 @@ const filterTasks = (data) =>{
         payload: data                      
     }
 }
-// const findTodos =() =>{    
-//     return {
-//         type: TODO_FIND,
-//     }
-// }
 
-export {
-    // addTodo,    
-    // deleteTodo,
+export {    
     filterTasks,
     setCurrentPage,
     deleteTask,

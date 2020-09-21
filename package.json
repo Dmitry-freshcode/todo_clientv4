@@ -20,7 +20,8 @@
     "redux": "^4.0.1",
     "redux-act": "^1.7.4",
     "redux-form": "^8.2.0",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "socket.io": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,8 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { 
-    TASK_CREATE,    
-    TASK_SAVE_STATE,
-   
+import {   
     FILTER_TASKS,
     TASKS_SET_CURRENT,
     TASK_DELETE,
@@ -11,8 +8,7 @@ import {
     TASKS_SET, 
     TASKS_GET,
 } from '../constants/tasks'
-import {   
-    filterTasks,  
+import {      
     getTasks,
     addTodo,
     updateTask,
@@ -20,23 +16,23 @@ import {
 } from '../api'
 
 export function* workerGetTasks(){
-    const response = yield getTasks();   
+    const response = yield getTasks();      
     yield put( {type: TASKS_SET, data:response.data});
 }
 
 export function* workerAddTask(data){    
-    const response = yield addTodo(data.payload);    
-    yield put( {type: TASKS_GET});
+    yield addTodo(data.payload);    
+    //yield put( {type: TASKS_GET});
 }
 
-export function* workerUpdateTask(query){   
-   const response = yield updateTask(query.payload);   
-    yield put( {type: TASKS_GET});
+export function* workerUpdateTask(query){    
+    yield updateTask(query.payload);   
+    //yield put( {type: TASKS_GET});
 }
 
 export function* workerDeleteTask(query){    
-    const response = yield deleteTask(query.payload);
-    yield put( {type: TASKS_GET});
+    yield deleteTask(query.payload);    
+    //yield put( {type: TASKS_GET});
 }
 
 export function* workerSetCurrent(index){        
@@ -56,7 +52,5 @@ export function* watchActionTasks() {
     yield takeEvery(TASK_UPDATE ,workerUpdateTask);
     yield takeEvery(TASK_DELETE ,workerDeleteTask);    
     yield takeEvery(TASKS_SET_CURRENT,workerSetCurrent);  
-    yield takeEvery(FILTER_TASKS, workerFilterTasks);
-    //yield takeEvery(TODO_EDIT_CURRENT, workerEditCurrent);
-    //yield takeEvery(TODO_FIND, FindTodo); 
+    yield takeEvery(FILTER_TASKS, workerFilterTasks);    
 }

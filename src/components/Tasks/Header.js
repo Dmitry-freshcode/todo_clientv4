@@ -7,16 +7,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {logoutUser} from '../../actions/user';
 import {addTask,filterTasks} from '../../actions/tasks'
+import { format} from 'date-fns';
+import {subscribeToLogin,subscribeTotest} from '../../api/socket'
 
 
 class Header extends Component {
     constructor(){
         super();
         this.state={
-            newDate:'',
+            newDate:format(new Date(),'yyyy-MM-dd'),
             newTask:'',
 
         }
+    }
+    componentDidMount(){        
+        subscribeToLogin();
     }
 
 
@@ -49,7 +54,7 @@ class Header extends Component {
 
   render() {
       const {username} = this.props.user;
-      const {tasksAll,tasksComplete,tasksNoCompleted,filter} = this.props.tasks;
+      const {tasksAll,tasksComplete,tasksNoCompleted} = this.props.tasks;
     return (
         <div className={styles.header}>        
             <div className={styles.userContainer}>
@@ -62,7 +67,7 @@ class Header extends Component {
                         />
             </div>       
             <div className={styles.newContainer}>
-                    <input className={styles.date} type="date" value="2020-05-01" onChange={this.changeDate}/>
+                    <input className={styles.date} type="date" value={this.state.newDate} onChange={this.changeDate}/>
                     <input className={styles.textInput} value={this.state.newTask} type="text" placeholder="new task" onChange={this.changeTask}/>
                     <button className={styles.add} onClick={this.onAdd}>add</button>
             </div>

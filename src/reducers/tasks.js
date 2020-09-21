@@ -1,9 +1,4 @@
-import { all } from 'redux-saga/effects';
-import { 
-    TASK_CREATE,    
-    TASK_UPDATE_STATE,
-	TASK_SAVE_STATE,
-
+import {    
 	FILTER_TASKS,
 	TASKS_SET_CURRENT,
 	TASK_DELETE,
@@ -64,14 +59,7 @@ const tasksReducer = (state = initialState, action) => {
 			return {
 				...state,
 				filter:action.payload,
-			};	
-		// case TODO_DELETE_CURRENT:			
-		// 	return {
-		// 		...state,
-		// 		currentPage:''
-		// 	} 
-		// case TODO_FIND:
-		// 	return state;  
+			};		 
         default:
             return state;
     }

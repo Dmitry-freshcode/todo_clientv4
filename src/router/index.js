@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch , Redirect } from 'react-router-dom';
+import { 
+    Router,
+    Route,
+    Switch,
+    //Redirect
+ } from 'react-router-dom';
 import history from '../utils/history';
 import PrivatRoute from './privateRouter';
 import Login from '../containers/login';

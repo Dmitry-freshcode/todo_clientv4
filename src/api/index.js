@@ -21,6 +21,7 @@ export const loginUser = async (data) =>{
 
 export const addUser = async (data) =>{    
   try{    
+    console.log(data);
     const response = await API.post('/users/add',{
       username: data.username,
       password: data.password      
@@ -46,11 +47,8 @@ export const getTasks = async () =>{
   try{      
     const _id = store.getState().user._id;
     const token = store.getState().user.access_token;      
-    let currentPage = localStorage.getItem('currentPage');
-    const filter = store.getState().tasks.filter;
-    if (!currentPage){
-      currentPage =  store.getState().tasks.currentPage;
-    }
+    let currentPage = localStorage.getItem('currentPage');    
+    const filter = store.getState().tasks.filter; 
     if(_id && token && currentPage){
       const response = await API.get('/todo/find/all',
       {
@@ -96,12 +94,13 @@ export const addTodo = async (todo) =>{
 export const updateTask = (query)  =>{
   const token = store.getState().user.access_token;
   //console.log(query)
-    API.patch('/todo/state/update',{
+    const response = API.patch('/todo/state/update',{
       query
     },
     {
       headers: {'Authorization': `Bearer ${token}`}      
     });
+    return response;
 }
 
 
@@ -112,33 +111,6 @@ export const deleteTask = async(id) =>{
     });
 }
 
-
-// export const getTodo = async () =>{   
-//   try{  
-//     const username = store.getState().user.username;
-//     const token = store.getState().token.access_token;
-//     //let currentPage =  store.getState().todo.currentPage;
-//     const currentPage = localStorage.getItem('currentPage')
-//     if(username && token && currentPage){
-//       const response = await API.get('/todo/find/all',
-//       {
-//         headers: {
-//             "Authorization": `Bearer ${token}`
-//         } ,
-//          params:{ 
-//           username : username,
-//           page: currentPage,
-//         }        
-//       })    
-//       return response;
-//     }
-
-  
-//   }catch(e){  
-//     console.log(e);     
-//     return e;
-//   }          
-// }
 
 
 

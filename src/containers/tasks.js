@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import {logoutUser} from '../actions/user';
 import styles from './tasks.module.css'
 import Header from '../components/Tasks/Header'

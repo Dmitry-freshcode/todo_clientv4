@@ -11,12 +11,12 @@ const initialState = {isLogin:false};
 
 const userReducer = (state = initialState, action) => {    
     switch (action.type) {  
+        case ADD_USER:                      
+            return state; 
         case USER_AUTOLOGIN:                      
             return state;     
         case USER_LOGIN:            
-            return state;
-        case ADD_USER:
-            return state;
+            return state;        
         case SAVE_LOCAL_USER:            
             return state; 
         case LOGOUT_USER:

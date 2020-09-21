@@ -20,19 +20,18 @@ import {
  } from '../api'
  import { push } from 'react-router-redux'; 
 
-export function* saveUserData(user){
-    //console.log(user)            
+export function* saveUserData(user){           
     yield put( {type: SAVE_LOCAL_USER, data:user});
     yield put( {type: SET_USER_DATA, data:user});
     yield put(push('/')); 
 }
 
 export function* workerAutologin(){
-    const token = yield localStorage.getItem('token');  
-    //console.log(token); 
+    const token = yield localStorage.getItem('token');      
     if(token !== 'undefined' && token !== null){
-        const response = yield getProfile(token);              
-        const user = {...response.data, access_token:token};        
+        const response = yield getProfile(token);  
+        let currentPage = localStorage.getItem('currentPage');    
+        const user = {...response.data, access_token:token, currentPage:currentPage};        
         yield saveUserData(user)
     } 
 }
@@ -52,12 +51,11 @@ export function* workerLogin(payload){
 
 
 export function* workerSaveLocal(payload){
-    const user = payload.data;    
-    //console.log(user);
+    const user = payload.data;        
     yield localStorage.setItem('username',user.username);
     yield localStorage.setItem('token',user.access_token);
     yield localStorage.setItem('_id',user._id);
-    yield localStorage.setItem('currentPage',user.currentPage || 1);
+    yield localStorage.setItem('currentPage',user.currentPage);
 }
 
 
@@ -70,13 +68,10 @@ export function* workerLogout(){
     yield put(push('/'));
 }
 
-export function* workerAddUser(payload){
-    //console.log(payload);
-    const response = yield addUser(payload.data); 
-    //console.log(response);  
+export function* workerAddUser(payload){    
+    const response = yield addUser(payload.data);     
     switch (response.status){
-        case 201:{
-            //const user = response.data;
+        case 201:{            
             yield put( {type: SET_ERRORS, data:response.data});            
             yield put(push('/'));                
             break;

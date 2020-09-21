@@ -7,11 +7,9 @@ import {setCurrentPage} from '../../actions/tasks';
 
 class Footer extends Component {
 
-
-    setCurrentPage = (index) =>{        
-        this.props.setCurrentPage(index);
+    setCurrentPage = (index) =>{    
+      this.props.setCurrentPage(index);
     }
-
 
   render() {
     const indexs = [...Array(this.props.tasks.pages)].map((elem,index)=>index+1);    
@@ -36,7 +34,7 @@ Footer.defaultProps = {
         tasksNoCompleted:0,
         filter:"all",
     }
-    }
+  }
     Footer.propTypes = {
   
   tasks:PropTypes.object.isRequired,
@@ -47,10 +45,7 @@ Footer.defaultProps = {
  });
  
  const mapDispatchToProps = dispatch => ({  
-    setCurrentPage: data=>dispatch(setCurrentPage(data)),  
-    //logoutUser: data => dispatch(logoutUser()),
-    //updateTasks: (data) => dispatch(updateTasks(data)),
-    //deleteTask: (data) => dispatch(deleteTask(data)),
+    setCurrentPage: data=>dispatch(setCurrentPage(data)),   
  })
  
  export default connect(mapStateToProps, mapDispatchToProps)(Footer);

@@ -32,7 +32,7 @@ class Login extends Component {
   
 
   addUser =(username,password)=>{
-    console.log('component put')
+    console.log(username,password)
     const data = {
       username,
       password,      

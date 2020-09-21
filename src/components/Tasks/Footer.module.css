@@ -13,8 +13,7 @@
     font-weight: bold;
 }
 
-.pagination p:hover{
-    color: blue;
+.pagination p:hover{    
     cursor: pointer;
     font-weight: bolder;
 }
