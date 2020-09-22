@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {logoutUser} from '../actions/user';
 import styles from './tasks.module.css'
-import Header from '../components/Tasks/Header'
+import Header from '../components/Header'
 import {getTasks} from '../actions/tasks'
-import  TaskList  from '../components/Tasks/TaskList'
-import Footer from '../components/Tasks/Footer'
+import  TaskList  from '../components/TaskList'
+import Footer from '../components/Footer'
 
 class Tasks extends Component {
 

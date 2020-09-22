@@ -20,8 +20,7 @@ export const loginUser = async (data) =>{
 }
 
 export const addUser = async (data) =>{    
-  try{    
-    console.log(data);
+  try{      
     const response = await API.post('/users/add',{
       username: data.username,
       password: data.password      

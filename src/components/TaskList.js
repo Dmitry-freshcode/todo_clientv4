@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { format} from 'date-fns';
-import { updateTasks,deleteTask} from '../../actions/tasks';
+import { updateTasks,deleteTask} from '../actions/tasks';
 
 class TaskList extends Component {
 
@@ -17,7 +17,7 @@ class TaskList extends Component {
 
   render() {          
     
-      const {tasks} = this.props.tasks;
+      const {tasks} = this.props.tasks;      
       const mapTasks = tasks.map((task,i) =>{
         const style =  classNames(styles.task, {[styles.through]: task.state})
       return   <li key={i} className={styles.listItem}>

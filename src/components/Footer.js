@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {setCurrentPage} from '../../actions/tasks';
+import {setCurrentPage} from '../actions/tasks';
 
 class Footer extends Component {
     setCurrentPage = (index) =>{    

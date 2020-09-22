@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './login.module.css'
-import LoginForm from '../components/login/LoginForm'
+import LoginForm from '../components/LoginForm'
 import {loginUser,addUser} from '../actions/user'
 import classNames from 'classnames';
 
