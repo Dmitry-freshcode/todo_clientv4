@@ -11,20 +11,15 @@ import {
   TASKS_GET,
 } from '../constants/tasks'
 
-
-
 function createSocketChannel(socket) {
 
   return eventChannel(emit => {
-
-    const refreshHandler = () => {      
-
-      emit(TASKS_GET)
+    const refreshHandler = () => {  
+      emit('')
     }
 
     const errorHandler = (errorEvent) => {
-  
-      emit(new Error(errorEvent.reason))
+        emit(new Error(errorEvent.reason))
     }
 
     socket.on('refresh', refreshHandler)
@@ -33,7 +28,6 @@ function createSocketChannel(socket) {
     const unsubscribe = () => {
       socket.off('refresh', refreshHandler)
     }
-
     return unsubscribe
   })
 }
@@ -41,7 +35,6 @@ function createSocketChannel(socket) {
 function* reloadTasks(){
   yield put({type: TASKS_GET});  
 }
-
 
 export function* watchOnRefresh() { 
   const socket = yield createWebSocketConnection;
@@ -57,6 +50,4 @@ export function* watchOnRefresh() {
       console.error('socket error:', err)      
     }
   }
-
-
 }
