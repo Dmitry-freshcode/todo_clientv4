@@ -6,7 +6,7 @@ import {
  } from 'redux-saga/effects'
 import { eventChannel } from 'redux-saga'
 import { createWebSocketConnection } from '../api/socket'
-//import {INCOMING_REFRESH} from '../constants/socket'
+import {INCOMING_REFRESH} from '../constants/socket'
 import { 
   TASKS_GET,
 } from '../constants/tasks'
@@ -38,8 +38,8 @@ function createSocketChannel(socket) {
   })
 }
 
-function* reloadTasks(payload){
-  yield put({type: payload});  
+function* reloadTasks(){
+  yield put({type: TASKS_GET});  
 }
 
 
@@ -50,7 +50,8 @@ export function* watchOnRefresh() {
   while (true) {
     try {     
       const payload = yield take(socketChannel)
-      yield fork(reloadTasks,payload);     
+      yield put({ type: INCOMING_REFRESH, payload })
+      yield fork(reloadTasks);     
      
     } catch(err) {
       console.error('socket error:', err)      

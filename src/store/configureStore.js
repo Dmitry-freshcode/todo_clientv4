@@ -14,7 +14,8 @@ import history from '../utils/history';
 
 import userReducer from '../reducers/user';
 import errorReducer from '../reducers/error';
-import tasksReducer from '../reducers/tasks'
+import tasksReducer from '../reducers/tasks';
+import socketReducer from '../reducers/socket'
 
 const rootReducer = combineReducers({
     form,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     router: routerReducer,
     user: userReducer,
     error:errorReducer,
+    socket:socketReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
