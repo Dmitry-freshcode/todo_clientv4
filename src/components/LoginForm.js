@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Login.module.css'
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import {google} from '../api'
 
 const LoginForm = (props) => {
   const formik = useFormik({
@@ -22,6 +23,10 @@ const LoginForm = (props) => {
       props.callBack(values.username,values.password);
     },
   });
+
+  const googleFetch = () =>{
+    google();
+  }
 
   return (
     <>
@@ -45,7 +50,7 @@ const LoginForm = (props) => {
         placeholder='password'
       /> 
       <button className={styles.loginButton} type="submit">Submit</button>
-      <span></span>  
+      <div onClick={googleFetch}>google</div>  
     </form>
     <div className={styles.errors}>
     {formik.touched.username && formik.errors.username ? (

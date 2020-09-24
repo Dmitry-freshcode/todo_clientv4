@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import {logoutUser} from '../actions/user';
 import {addTask,filterTasks} from '../actions/tasks'
 import { format} from 'date-fns';
-import {subscribeToReload} from '../api/socket'
+//import {subscribeToReload} from '../api/socket'
 
 class Header extends Component {
     constructor(){
@@ -19,7 +19,7 @@ class Header extends Component {
         }
     }
     componentDidMount(){        
-        subscribeToReload();
+        //subscribeToReload();
     }
 
     logout =()=>{

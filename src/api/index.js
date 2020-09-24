@@ -109,6 +109,17 @@ export const deleteTask = async(id) =>{
     });
 }
 
+export const google = async() =>{           
+    const response = API.post('/auth/google',{
+      header:{
+        
+      }
+    }
+  
+    );
+    return response;
+}
+
 
 
 

@@ -25,7 +25,7 @@ class MainRouter extends Component {
             <Router history={history}>    
                 <Switch>   
                     <Route path="/login" component={Login}/>                     
-                    <PrivatRoute auth={this.props.user.isLogin} path="/" component={Tasks}/>                                        
+                    <PrivatRoute auth={this.props.user.isLogin} path="/" component={Tasks}/>                                                           
                     <Route path="*" component={Login}/>
                 </Switch>
             </Router>
